@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amrita Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url(https://webfiles.amrita.edu/2024/06/branding-guidline-bg.jpeg);
+        }
+
+        /* Header */
+        .header {
+            background-color: #002147;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: #014f86;
+            text-align: center;
+            padding: 12px;
+        }
+
+        .nav button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 15px;
+            margin: 0 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav button:hover {
+            color: #ffd60a;
+            transform: scale(1.1);
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 50px 20px;
+            gap: 40px;
+        }
+
+        /* Login Box */
+        .login-box {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        /* NEW EFFECTIVE LOGIN BUTTON */
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #59a6f4, #0458bf);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-box button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        /* Campus Details */
+        .campus-details {
+            background: white;
+            width: 450px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .campus-details img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .campus-details {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    AMRITA VISHWA VIDHYAPEETHAM
+</div>
+
+<div class="nav">
+    <button onclick="showCampus('coimbatore')">Coimbatore</button>
+    <button onclick="showCampus('amritapuri')">Amritapuri</button>
+    <button onclick="showCampus('bangalore')">Bangalore</button>
+    <button onclick="showCampus('chennai')">Chennai</button>
+    <button onclick="showCampus('amaravati')">Amaravati</button>
+</div>
+
+<div class="container">
+
+    <!-- Login -->
+    <div class="login-box">
+        <h2>Student Login</h2>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Campus Info -->
+    <div class="campus-details" id="campusInfo">
+        <h2>About the Campus</h2>
+        <p>Select a campus to view details.</p>
+    </div>
+
+</div>
+
+<script>
+
+function login() {
+    alert("Login Successful!");
+}
+
+function showCampus(campus) {
+
+    let info = document.getElementById("campusInfo");
+
+    if (campus === "coimbatore") {
+        info.innerHTML = `
+        <h2>Coimbatore Campus</h2>
+        <p> Top ranked engineering campus with advanced research labs and modern infrastructure.
+            Located in Ettimadai at the foothills of the Western Ghats, the Amrita Coimbatore campus is the 400-acre 
+            headquarters of Amrita Vishwa Vidyapeetham.Have high infrastructure The campus is highly regarded for its 
+            research-intensive environment and strong industry ties, consistently achieving placement rates over 
+            90% with top global firms.focus and 90%+ placement rates with top global firms.</p>
+        <img src="https://tse3.mm.bing.net/th/id/OIP.elkN6U_aVSlLuBTcPX2q_QHaEK?pid=Api&P=0&h=180">
+        `;
+    }
+
+    else if (campus === "amritapuri") {
+        info.innerHTML = `
+        <h2>Amritapuri Campus</h2>
+        <p>Beautiful coastal campus in Kerala known for research and innovation.
+           Located in the coastal village of Vallikavu, Kerala, is a key academic hub of Amrita Vishwa Vidyapeetham.
+           It offers diverse programs and emphasizing a unique blend of modern technology and spiritual values
+           Known for its strong research focus and global partnerships, the campus provides students with high 
+           placement rates and a value-based, residential learning environment near the Mata Amritanandamayi Math.</p>
+        <img src="https://tse4.mm.bing.net/th/id/OIP.jPuLxk4ALi6yUzvKevF7fgHaEM?pid=Api&P=0&h=180">
+        `;
+    }
+
+    else if (campus === "bangalore") {
+        info.innerHTML = `
+        <h2>Bangalore Campus</h2>
+        <p>Strong industry collaborations and placements in IT and management sectors.
+           Located in Kasavanahalli, the 50-acre campus houses the Schools of Engineering and Business, 
+           offering specialized B.Tech, M.Tech, and MBA programs designed with a strong "solution-mindset". 
+           It is recognized for its high academic standards and strategic location near Electronic City, facilitating
+           strong industry ties and a 90%+ placement rate with top recruiters like Google, Amazon, and Microsoft.</p>
+        <img src="https://tse4.mm.bing.net/th/id/OIP.AxDXEuEdONmn1Poym0qaiQHaDt?pid=Api&P=0&h=180">
+        `;
+    }
+
+    else if (campus === "chennai") {
+        info.innerHTML = `
+        <h2>Chennai Campus</h2>
+        <p>Focuses on innovation, robotics, and engineering excellence.
+           The Amrita Chennai campus, located in Vengal, is a core engineering hub of Amrita Vishwa Vidyapeetham, 
+           It offers specialized B.Tech and M.Tech programs in different fields characterized by a choice-based credit
+           system and continuous evaluation. The campus is noted for its strong research culture and excellent career 
+           outcomes, 92% placement rate with top firms such as Amazon and IBM.</p>
+        <img src="https://tse2.mm.bing.net/th/id/OIP.5Cd4ekgT1P_EX7zhzH_D1AHaDp?pid=Api&P=0&h=180">
+        `;
+    }
+
+    else if (campus === "amaravati") {
+        info.innerHTML = `
+        <h2>Amaravati Campus</h2>
+        <p>Located in Mangalagiri. Famous for Arts, Science and research activities in a peaceful environment.
+           The Amrita Amaravati campus is a 200-acre, research-driven institution in Andhra Pradesh's greenfield capital.
+           it offers industry-aligned programs in Engineering, Management, and Sciences including B.Tech, MBA, and 
+           Integrated M.Sc.courses designed with a focus on sustainability and ethical standards.Known for its 
+           "Education for Life" philosophy, the campus blends high-tech infrastructure with ethical values.
+           The campus has quickly established a strong corporate presence,an average package of ₹9.08 LPA for
+           its B.Tech graduates, with top recruiters including Amazon, IBM, and Cognizant. 
+
+        </p>
+        <img src="https://tse4.mm.bing.net/th/id/OIP.WIKj0_HGLKy7-vepQuwuLwHaDK?pid=Api&P=0&h=180">
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign of Product</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 320px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: scale(1.03);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #5b86e5;
+            outline: none;
+            box-shadow: 0 0 6px rgba(91,134,229,0.4);
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            background: #5b86e5;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #3f6fd1;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Check Product Sign</h2>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    <input type="number" id="num3" placeholder="Enter third number">
+
+    <button onclick="checkSign()">Find Sign</button>
+    <button onclick="resetFields()">Reset</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+
+function checkSign() {
+    let a = document.getElementById("num1").value;
+    let b = document.getElementById("num2").value;
+    let c = document.getElementById("num3").value;
+    let res = document.getElementById("result");
+
+    // Validation
+    if (a === "" || b === "" || c === "") {
+        alert("Please enter all numbers");
+        return;
+    }
+
+    let product = a * b * c;
+
+    // Logic
+    if (product > 0) {
+        res.innerHTML = "Product = " + product + "<br>Sign is Positive (+)";
+        res.style.color = "green";
+        alert("The sign is plus (+)");
+    } 
+    else if (product < 0) {
+        res.innerHTML = "Product = " + product + "<br>Sign is Negative (-)";
+        res.style.color = "red";
+        alert("The sign is minus (-)");
+    } 
+    else {
+        res.innerHTML = "Product = 0<br>Sign is Zero (0)";
+        res.style.color = "orange";
+        alert("The product is zero (0)");
+    }
+}
+
+// Reset function
+function resetFields() {
+    document.getElementById("num1").value = "";
+    document.getElementById("num2").value = "";
+    document.getElementById("num3").value = "";
+    document.getElementById("result").innerHTML = "";
+}
+
+// Enter key support
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        checkSign();
+    }
+});
+
+</script>
+
+</body>
+</html>

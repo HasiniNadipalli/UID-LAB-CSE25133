@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mobile Number Validation</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+        .container{
+            background:white;
+            padding:40px;
+            width:380px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        }
+        h2{
+            margin-bottom:25px;
+            color:#333;
+            font-size:32px;
+        }
+        input{
+            width:100%;
+            padding:15px;
+            border:2px solid #ccc;
+            border-radius:10px;
+            font-size:17px;
+            outline:none;
+            transition:0.3s;
+        }
+        input:focus {
+            border-color: #ff758c;
+            outline: none;
+            box-shadow: 0 0 6px rgba(255,117,140,0.4);
+        }
+        button{
+            width:100%;
+            padding:14px;
+            margin-top:15px;
+            border:none;
+            border-radius:10px;
+            background: #ff758c;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+        button:hover{
+            transform:translateY(-2px);
+            opacity:0.9;
+        }
+        #message{
+            margin-top:18px;
+            font-size:18px;
+            font-weight:bold;
+        }
+        .error{
+            color:red;
+        }
+        .success{
+            color:green;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Mobile Validation</h2>
+        <input 
+            type="text"
+            id="mobile"
+            placeholder="Enter Mobile Number"
+            onblur="validateMobile()">
+        <p id="message"></p>
+        <button onclick="submitForm()">Submit</button>
+    </div>
+    <script>
+        let mobile = document.getElementById("mobile");
+        let message = document.getElementById("message");
+        function validateMobile(){
+            let number = mobile.value;
+            let pattern =/^[0-9]{10}$/;
+            if(number.match(pattern)){
+                message.innerHTML ="Valid Mobile Number";
+                message.className ="success";
+            }
+            else if(number.length === 0){
+                message.innerHTML ="";
+            }
+            else{
+                message.innerHTML ="Mobile Number must be exactly 10 digits";
+                message.className ="error";
+            }
+        }
+        function submitForm(){
+            let number = mobile.value;
+            let pattern =/^[0-9]{10}$/;
+            if(number.length === 0){
+                alert("Please enter mobile number");
+            }
+            else if(number.match(pattern)){
+                alert("Mobile Number Submitted Successfully!");
+            }
+            else{
+                alert("Invalid Mobile Number");
+            }
+        }
+        mobile.addEventListener("keypress",
+        function(event){
+            if(event.key === "Enter"){submitForm();}
+        });
+    </script>
+</body>
+</html>

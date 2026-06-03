@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Odd or Even (0-15)</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 340px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            background: #7b6cf6;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
+        button:hover {
+            background: #5b4be0;
+        }
+
+        #result {
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .even { color: green; }
+        .odd { color: red; }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Odd / Even (0–15)</h2>
+
+    <button onclick="checkNumbers()">Show Result</button>
+    <button onclick="resetResult()">Reset</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+
+function checkNumbers() {
+    let output = "";
+    let res = document.getElementById("result");
+
+    for (let i = 0; i <= 15; i++) {
+
+        if (i % 2 === 0) {
+            output += "<span class='even'>" + i + " is Even</span><br>";
+        } else {
+            output += "<span class='odd'>" + i + " is Odd</span><br>";
+        }
+    }
+
+    res.innerHTML = output;
+    alert("Check results displayed on screen");
+}
+
+function resetResult() {
+    document.getElementById("result").innerHTML = "";
+}
+
+</script>
+
+</body>
+</html>

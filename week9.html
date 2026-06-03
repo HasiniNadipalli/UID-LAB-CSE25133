@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Number Analyzer</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: 
+        linear-gradient(rgba(101, 97, 97, 0.6), rgba(0,0,0,0.7));
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: 0.3s;
+}
+
+.container:hover {
+    transform: scale(1.03);
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+input {
+    padding: 12px;
+    width: 90%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus {
+    box-shadow: 0 0 12px #fff;
+}
+
+button {
+    margin: 6px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+button:hover {
+    background: white;
+    color: #333;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#output {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    font-weight: bold;
+    min-height: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔢 Number Analyzer</h1>
+
+    <input type="number" id="num" placeholder="Enter a number">
+
+    <div>
+        <button onclick="checkEven()">Even</button>
+        <button onclick="checkOdd()">Odd</button>
+        <button onclick="checkPrime()">Prime</button>
+        <button onclick="factorial()">Factorial</button>
+        <button onclick="checkArmstrong()">Armstrong</button>
+        <button onclick="clearOutput()">Clear</button>
+    </div>
+
+    <div id="output">Output will appear here</div>
+</div>
+
+<script>
+function getInput() {
+    let value = document.getElementById("num").value;
+    if (value === "") {
+        showOutput("⚠️ Please enter a number");
+        return null;
+    }
+    return parseInt(value);
+}
+
+function showOutput(msg) {
+    document.getElementById("output").innerText = msg;
+}
+
+function checkEven() {
+    let n = getInput();
+    if (n === null) return;
+
+    if (n % 2 === 0)
+        showOutput(n + " is Even");
+    else
+        showOutput(n + " is NOT Even");
+}
+
+function checkOdd() {
+    let n = getInput();
+    if (n === null) return;
+
+    if (n % 2 !== 0)
+        showOutput(n + " is Odd");
+    else
+        showOutput(n + " is NOT Odd");
+}
+
+function checkPrime() {
+    let n = getInput();
+    if (n === null) return;
+
+    if (n <= 1) {
+        showOutput(n + " is NOT Prime");
+        return;
+    }
+
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) {
+            showOutput(n + " is NOT Prime");
+            return;
+        }
+    }
+    showOutput(n + " is Prime");
+}
+
+function factorial() {
+    let n = getInput();
+    if (n === null) return;
+
+    let fact = 1;
+
+    if (n < 0) {
+        showOutput("Factorial not defined for negative numbers");
+        return;
+    }
+
+    for (let i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    showOutput("Factorial of " + n + " is " + fact);
+}
+
+function checkArmstrong() {
+    let n = getInput();
+    if (n === null) return;
+
+    let sum = 0;
+    let temp = n;
+    let digits = n.toString().length;
+
+    while (temp > 0) {
+        let digit = temp % 10;
+        sum += Math.pow(digit, digits);
+        temp = Math.floor(temp / 10);
+    }
+
+    if (sum === n)
+        showOutput(n + " is an Armstrong Number");
+    else
+        showOutput(n + " is NOT an Armstrong Number");
+}
+
+function clearOutput() {
+    document.getElementById("num").value = "";
+    showOutput("Output cleared");
+}
+
+document.getElementById("num").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        checkPrime();
+    }
+});
+</script>
+
+</body>
+</html>
